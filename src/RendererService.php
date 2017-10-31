@@ -25,6 +25,7 @@ class RendererService extends View
         'dir'       => 'email',
     ];
     protected $subject;
+    protected $cssFiles = [];
 
     public function __construct(array $config)
     {
@@ -58,10 +59,28 @@ class RendererService extends View
         });
     }
 
+    public static function renderCss()
+    {
+        static::$instance or static::$instance = static::$di->getShared('mailRenderer');
+        if ($cssFiles = static::$instance->cssFiles) {
+            echo '<style type="text/css">';
+            foreach ($cssFiles as $file) {
+                include $file;
+            }
+            echo '</style>';
+        }
+    }
+
     public static function renderEmail($template, array $params = [])
     {
         static::$instance or static::$instance = static::$di->getShared('mailRenderer');
         return static::$instance->doRender($template, $params);
+    }
+
+    public static function setCssFiles(array $files)
+    {
+        static::$instance or static::$instance = static::$di->getShared('mailRenderer');
+        static::$instance->cssFiles = $files;
     }
 
     public static function setSubject($subject)
