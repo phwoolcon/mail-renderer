@@ -1,0 +1,39 @@
+<?php
+/* @var Phwoolcon\View\Engine\Php $this */
+isset($subscriptionHash) or $subscriptionHash = false;
+?>
+<table class="w640 footer" cellpadding="0" cellspacing="0" border="0" bgcolor="#425470">
+    <tbody>
+    <tr>
+        <td class="w30" width="30"></td>
+        <td class="w580 h0" width="360" height="30"></td>
+        <td class="w0" width="60"></td>
+        <td class="w0" width="160"></td>
+        <td class="w30" width="30"></td>
+    </tr>
+    <tr>
+        <td class="w30" width="30"></td>
+        <td class="w580" width="360" valign="top">
+            <p align="left" class="footer-content-left">
+                &copy; 2017 <a href="<?php echo url(''); ?>" target="_blank">phwoolcon.org</a>
+            </p>
+        </td>
+        <td class="hide w0" width="60"></td>
+        <td class="hide w0" width="160" valign="top">
+            <p align="right" class="street-address footer-content-right">
+                <?php if ($subscriptionHash) { ?>
+                    <a href="<?php echo url('newsletter/unsubscribe/' . $subscriptionHash); ?>"><?php echo __('Unsubscribe'); ?></a>
+                <?php } ?>
+            </p>
+        </td>
+        <td class="w30" width="30"></td>
+    </tr>
+    <tr>
+        <td class="w30" width="30"></td>
+        <td class="w580 h0" width="360" height="15"></td>
+        <td class="w0" width="60"></td>
+        <td class="w0" width="160"></td>
+        <td class="w30" width="30"></td>
+    </tr>
+    </tbody>
+</table>

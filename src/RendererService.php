@@ -22,6 +22,7 @@ class RendererService extends View
     protected static $instance;
     protected $config = [
         'top_level' => 'email',
+        'layout'    => 'phwoolcon-default',
         'dir'       => 'email',
     ];
     protected $subject;
@@ -37,8 +38,14 @@ class RendererService extends View
     {
         $this->prepareEnvironment();
         $body = View::make($template, $params);
-        $this->view->reset();
+        $this->reset();
         return [$this->subject, $body];
+    }
+
+    public static function getSubject()
+    {
+        static::$instance or static::$instance = static::$di->getShared('mailRenderer');
+        return static::$instance->subject;
     }
 
     protected function prepareEnvironment()
@@ -46,6 +53,7 @@ class RendererService extends View
         $view = $this->view;
         $view->_fillResponse = false;
         $view->_mainView = $this->config['top_level'];
+        $view->_layout = $this->config['layout'];
         $view->_theme = $this->config['dir'];
         $this->subject = null;
     }
@@ -75,6 +83,13 @@ class RendererService extends View
     {
         static::$instance or static::$instance = static::$di->getShared('mailRenderer');
         return static::$instance->doRender($template, $params);
+    }
+
+    public function reset()
+    {
+        $this->subject = null;
+        $this->cssFiles = [];
+        $this->view->reset();
     }
 
     public static function setCssFiles(array $files)

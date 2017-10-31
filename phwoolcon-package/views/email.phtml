@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="<?= View::getPageLanguage(); ?>">
 <head>
-    <title><?= View::getParam('subject') ?></title>
+    <title><?= MailRenderer::getSubject() ?></title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <meta name="viewport" content="width=320, target-densitydpi=device-dpi"/>
     <?php MailRenderer::renderCss() ?>
