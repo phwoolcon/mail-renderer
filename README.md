@@ -13,7 +13,7 @@ Email Templating and Rendering Module for Phwoolcon
 
 ### Configure
 
-The [default config file]() will be linked to `app/config/mail-renderer.php`
+The [default config file](phwoolcon-package/config/mail-renderer.php) will be linked to `app/config/mail-renderer.php`
 
 If you need to change the options, please make a copy under production dir and modify it:
 ```bash
