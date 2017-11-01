@@ -78,9 +78,12 @@ class RendererService extends View
     {
         static::$instance or static::$instance = static::$di->getShared('mailRenderer');
         if ($cssFiles = static::$instance->cssFiles) {
+            $view = static::$instance->view;
+            $debug = $view->config['debug'];
             echo '<style type="text/css">';
             foreach ($cssFiles as $file) {
-                include $file;
+                echo $debug ? "/* {$file} */" : '';
+                include $view->getAbsoluteViewPath($file);
             }
             echo '</style>';
         }
