@@ -34,6 +34,12 @@ class RendererService extends View
         $this->config = $config;
     }
 
+    public function addCssFile($file)
+    {
+        static::$instance or static::$instance = static::$di->getShared('mailRenderer');
+        static::$instance->cssFiles[] = $file;
+    }
+
     protected function doRender($template, array $params = [])
     {
         $this->prepareEnvironment();
