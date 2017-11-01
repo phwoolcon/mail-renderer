@@ -38,8 +38,9 @@ class RendererService extends View
     {
         $this->prepareEnvironment();
         $body = View::make($template, $params);
+        $subject = $this->subject;
         $this->reset();
-        return [$this->subject, $body];
+        return [$subject, $body];
     }
 
     public static function getSubject()
