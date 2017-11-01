@@ -9,6 +9,14 @@
 
 Email Templating and Rendering Module for Phwoolcon
 
+## Install
+
+Install as a `phwoolcon` package
+
+```bash
+bin/import-package phwoolcon/mail-renderer
+```
+
 ## Usage
 
 ### Configure

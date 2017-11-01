@@ -1,0 +1,11 @@
+{
+    "require": {
+        "phwoolcon/mail-renderer": "~1.0"
+    },
+    "phwoolcon-packages": [
+        {
+            "name": "phwoolcon/mail-renderer",
+            "url": "git@github.com:phwoolcon/mail-renderer.git"
+        }
+    ]
+}
